@@ -1,4 +1,5 @@
 import { Route } from 'react-router-dom';
+import { Loader } from 'semantic-ui-react';
 
 export const RenderRoute = ({
   component: Component,
@@ -6,4 +7,10 @@ export const RenderRoute = ({
   exact
 }) => (
   <Route path={path} exact={exact} render={() => <Component />} />
+);
+
+export const loading = (
+  <div>
+    <Loader size='medium' active />
+  </div>
 );

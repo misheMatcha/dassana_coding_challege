@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Item } from 'semantic-ui-react';
 import { fetchData } from '../util/api_util';
+import { loading } from '../util/general_util';
 
 const Home = () => {
   const [videoList, setVideoList] = useState(null);
@@ -21,7 +22,7 @@ const Home = () => {
             <Item as={Link} to={`/video/${video.id.videoId}`}>
               <Item.Image size='medium' src={video.snippet.thumbnails.medium.url} />
               <Item.Content verticalAlign='middle'>
-                <Item.Header as='a'>{video.snippet.title}</Item.Header>
+                <Item.Header >{video.snippet.title}</Item.Header>
                 <Item.Description>
                   {video.snippet.channelTitle}
                 </Item.Description>
@@ -33,7 +34,7 @@ const Home = () => {
     </ul>
   };
 
-  return videoList ? displayVideos() : <p>loading...</p>;
+  return videoList ? displayVideos() : loading;
 };
 
 export default withRouter(Home);

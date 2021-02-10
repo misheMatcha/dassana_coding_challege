@@ -11,6 +11,6 @@ export const RenderRoute = ({
 
 export const loading = (
   <div>
-    <Loader size='medium' active />
+    <Loader size='massive' active />
   </div>
 );

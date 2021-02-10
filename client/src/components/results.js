@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Dropdown, Image } from 'semantic-ui-react';
-import { fetchData } from '../util/api_util';
+import { fetchSearchResults } from '../util/api_util';
 import { loading, timeSincePublished } from '../util/general_util';
 import { SEARCH_RESULTS } from '../util/search_results';
 
 const Results = props => {
   const query = props.history.location.pathname;
-  const [searchResults, setSearchResults] = useState(null);
+  // const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
-    fetchData(10 ,query.slice(9)).then(data => setSearchResults(data.items))
+    // fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
   }, []);
 
   const displayResults = (

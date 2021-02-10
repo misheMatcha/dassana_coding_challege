@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Grid, Item } from 'semantic-ui-react';
-import { fetchData } from '../util/api_util';
+import { fetchSearchResults } from '../util/api_util';
 import { loading, timeSincePublished } from '../util/general_util';
 import { SEARCH_RESULTS } from '../util/search_results';
 
 const Home = () => {
   // const [videoList, setVideoList] = useState(null);
-  const [videoList, setVideoList] = useState(null);
+  const [videoList, setVideoList] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
     // limit results to 15 due to daily limitations on get requests
     // hard code query as its the home page
     // and pull items only as it's the array we need
-    fetchData(15, 'genshin lo-fi').then(data => setVideoList(data.items));
+    // fetchSearchResults(15, 'genshin lo-fi').then(data => setVideoList(data.items));
   }, []);
 
   const displayVideos = () => {

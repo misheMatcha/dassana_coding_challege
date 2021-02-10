@@ -8,11 +8,11 @@ import Results from "./components/results";
 import VideoShow from "./components/video_show";
 
 function App() {
-  return <div>
+  return <div id='app'>
     <Navbar />
     <Switch>
       <RenderRoute exact path='/' component={Home} />
-      <RenderRoute exact path='/results' component={Results} />
+      <RenderRoute exact path='/results/:search_query' component={Results} />
       <RenderRoute exact path='/video/:id' component={VideoShow} />
     </Switch>
   </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Item } from 'semantic-ui-react';
 import { fetchData } from '../util/api_util';
 
@@ -10,15 +10,15 @@ const Home = () => {
     // limit results to 25 due to daily limitations on get requests
     // hard code query as its the home page
     // and pull items only as it's the array we need
-    fetchData(5, 'lo-fi').then(data => setVideoList(data.items));
+    fetchData(1, 'lo-fi').then(data => setVideoList(data.items));
   }, []);
 
   const displayVideos = () => {
     return <ul>
       {
         videoList.map(video => {
-          return <Item.Group as={Link} to={`/video/${video.id.videoId}`} key={video.id.videoId}>
-            <Item>
+          return <Item.Group key={video.id.videoId}>
+            <Item as={Link} to={`/video/${video.id.videoId}`}>
               <Item.Image size='medium' src={video.snippet.thumbnails.medium.url} />
               <Item.Content verticalAlign='middle'>
                 <Item.Header as='a'>{video.snippet.title}</Item.Header>
@@ -36,4 +36,4 @@ const Home = () => {
   return videoList ? displayVideos() : <p>loading...</p>;
 };
 
-export default Home;
+export default withRouter(Home);

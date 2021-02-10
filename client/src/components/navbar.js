@@ -1,17 +1,30 @@
-import React from 'react';
-import { Input, Menu, Header, Icon } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react';
+import { Link, useParams, withRouter } from 'react-router-dom';
+import { Input, Menu, Icon } from 'semantic-ui-react'
 
-const Navbar = () => {
-  return <Menu attached='top'>
-    <Menu.Item>
+const Navbar = props => {
+  const [query, setQuery] = useState('');
+
+  const handleInput = (event) => {
+    setQuery(event.target.value)
+  };
+
+  const submitSearch = () => {
+    props.history.push(`/results/${query}`);
+  };
+
+  return <Menu className='navbar'>
+    <Menu.Item position='left'>
       <Icon name='sidebar' />
-      <Icon name='youtube play' />
+      <Link to='/'>
+        <Icon name='youtube play'/>
+      </Link>
     </Menu.Item>
     <Menu.Item>
-      <Input className='icon' icon='search' placeholder='search...' />
+      <Input onChange={event => handleInput(event)} action={{ icon: 'search', onClick: () => submitSearch() }} placeholder='Search' />
       <Icon name='microphone' />
     </Menu.Item>
-    <Menu.Item>
+    <Menu.Item position='right'>
       <Icon name='video camera' />
       <Icon name='grid layout' />
       <Icon name='bell' />
@@ -19,4 +32,4 @@ const Navbar = () => {
   </Menu>
 };
 
-export default Navbar;
+export default withRouter(Navbar);

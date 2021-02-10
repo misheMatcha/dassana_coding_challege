@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router';
 
-const VideoShow = () => {
+const VideoShow = props => {
+  useEffect(() => {
+    // console.log(props.history)
+  })
+
   return <div>
     video page
   </div>
 };
 
-export default VideoShow;
+export default withRouter(VideoShow);

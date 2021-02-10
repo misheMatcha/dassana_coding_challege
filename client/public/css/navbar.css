@@ -1,0 +1,11 @@
+.ui.navbar.menu{
+  background-color: #212121;
+  border-radius: 0px;
+}
+  .ui.navbar.menu i{
+    color: #FFFFFF;
+  }
+    .search.icon::before{
+      color: #6F6F6F;
+      /* background-color: #323232; */
+    }

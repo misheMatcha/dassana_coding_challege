@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Grid, Item } from 'semantic-ui-react';
 import { fetchData } from '../util/api_util';
-import { loading } from '../util/general_util';
+import { loading, timeSincePublished } from '../util/general_util';
 import { SEARCH_RESULTS } from '../util/search_results';
 
 const Home = () => {
   // const [videoList, setVideoList] = useState(null);
   const [videoList, setVideoList] = useState(SEARCH_RESULTS);
-  
+
   useEffect(() => {
     // limit results to 25 due to daily limitations on get requests
     // hard code query as its the home page
     // and pull items only as it's the array we need
-    // fetchData(5, 'lo-fi').then(data => setVideoList(data.items));
+    // fetchData(5, 'genshin lo-fi').then(data => setVideoList(data.items));
   }, []);
-  
+
   const displayVideos = () => {
     return <Grid columns='equal' centered padded>
       {
@@ -26,9 +26,11 @@ const Home = () => {
               <Item.Content verticalAlign='middle'>
                 <Item.Header className='home-header'>{video.snippet.title}</Item.Header>
                 <Item.Description className='home-desc'>
-                  {video.snippet.channelTitle}<br />
+                  <span className='home-desc-channel'>{video.snippet.channelTitle}</span><br />
                   {/* need video api to pull subscriptions obj for view count */}
-                  {`view count`} {video.snippet.publishTime}
+                  {/* to be added later */}
+                  {/* {`view count`} {timeSincePublished(video.snippet.publishTime)} */}
+                  {timeSincePublished(video.snippet.publishTime)}
                 </Item.Description>
               </Item.Content>
             </Item>

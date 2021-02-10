@@ -14,17 +14,19 @@ const Navbar = props => {
   };
   
   return <Sticky>
-    <Grid centered columns='equal' padded>
-      <Grid.Column verticalAlign='middle'>
+    <Grid className='navbar' centered columns='equal' padded>
+      <Grid.Column className='navbar-sidebar' verticalAlign='middle'>
         <Icon name='sidebar' />
         <Link to='/'>
           <Icon name='youtube play'/> <span className='nav-title'>YouTube</span>
         </Link>
       </Grid.Column>
       <Grid.Column width={7}>
-        <Input onChange={event => handleInput(event)} action={{ icon: 'search', onClick: () => submitSearch() }} placeholder='Search' fluid />
+        <Input className='navbar-searchbar' onChange={event => handleInput(event)}
+          action={{ icon: 'search', onClick: () => submitSearch() }}
+          placeholder='Search' fluid />
       </Grid.Column>
-      <Grid.Column width={1}>
+      <Grid.Column className='navbar-mic' width={1} verticalAlign='middle'>
         <Icon name='microphone' />
       </Grid.Column>
       <Grid.Column verticalAlign='middle'>

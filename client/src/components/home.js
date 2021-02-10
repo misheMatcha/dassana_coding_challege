@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   const displayVideos = () => {
-    return <Grid columns='equal' centered padded>
+    return <Grid className='homepage' columns='equal' centered padded>
       {
         videoList.map(video => {
           return <Grid.Column className='home-video' width={3} key={video.id.videoId}>

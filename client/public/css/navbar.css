@@ -1,11 +1,27 @@
-.ui.navbar.menu{
+/* .ui.navbar.menu{
   background-color: #212121;
   border-radius: 0px;
+  max-height: 56px;
 }
   .ui.navbar.menu i{
     color: #FFFFFF;
   }
+  .sidebar.icon::before{
+    font-size: 20px;
+  }
+  .youtube.play.icon{
+    font-size: 30px;
+  }
+  .youtube.play.icon::before{
+    color: red;
+  }
     .search.icon::before{
       color: #6F6F6F;
-      /* background-color: #323232; */
+      background-color: #323232;
     }
+
+.nav-title{
+  font-size: 20px;
+  color: #FFFFFF;
+  font-family: 'Roboto Condensed', sans-serif;
+} */

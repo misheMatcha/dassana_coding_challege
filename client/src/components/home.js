@@ -20,7 +20,7 @@ const Home = () => {
     return <Grid columns='equal' centered padded>
       {
         videoList.map(video => {
-          return <Grid.Column className='home-video' width={3}>
+          return <Grid.Column className='home-video' width={3} key={video.id.videoId}>
             <Item as={Link} to={`/video/${video.id.videoId}`}>
               <Item.Image size='medium' src={video.snippet.thumbnails.medium.url} />
               <Item.Content verticalAlign='middle'>

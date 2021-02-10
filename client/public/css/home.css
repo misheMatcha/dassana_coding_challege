@@ -1,6 +1,8 @@
 .ui.centered.padded.equal.width.grid{
+  background-color: #181818;
   font-size: 14px;
 }
+
 .header.home-header{
   color: #FFFFFF;
   font-weight: 600;

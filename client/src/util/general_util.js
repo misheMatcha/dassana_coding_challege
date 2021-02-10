@@ -63,3 +63,13 @@ export const timeSincePublished = date => {
 
   return `${diff} ${whichIncrement}${diff <= 1 ? '' : `s`} ago`;
 };
+
+export const convertPublishDateFormat = date => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr',
+                  'May', 'Jun', 'Jul', 'Aug',
+                  'Sep', 'Oct', 'Nov', 'Dec'];
+  const dateSections = date.split('-');
+  dateSections[2] = dateSections[2].slice(0,2);
+
+  return `${months[dateSections[1] - 1]} ${dateSections[2]}, ${dateSections[0]}`;
+};

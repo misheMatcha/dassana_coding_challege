@@ -32,32 +32,34 @@ export const timeSincePublished = date => {
 
   if(diff < minute){
     diff /= second;
-    whichIncrement = 'seconds';
+    whichIncrement = 'second';
 
   }else if(diff < hour){
     diff /= minute;
-    whichIncrement = 'minutes';
+    whichIncrement = 'minute';
 
   }else if(diff < day){
     diff /= hour;
-    whichIncrement = 'hours';
+    whichIncrement = 'hour';
 
   }else if(diff < week){
     diff /= day;
-    whichIncrement = 'days';
+    whichIncrement = 'day';
 
   }else if(diff < month){
     diff /= week;
-    whichIncrement = 'weeks';
+    whichIncrement = 'week';
 
   }else if(diff < year){
     diff /= month;
-    whichIncrement = 'months';
+    whichIncrement = 'month';
 
   }else{
     diff /= year;
-    whichIncrement = 'years';
+    whichIncrement = 'year';
   }
 
-  return `${Math.trunc(diff)} ${whichIncrement} ago`;
+  diff = Math.trunc(diff);
+
+  return `${diff} ${whichIncrement}${diff <= 1 ? '' : `s`} ago`;
 };

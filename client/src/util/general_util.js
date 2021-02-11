@@ -63,3 +63,23 @@ export const timeSincePublished = date => {
 
   return `${diff} ${whichIncrement}${diff <= 1 ? '' : `s`} ago`;
 };
+
+// original format: year-month-day(time attached to date)
+// isolate day
+// to get month -1 from number to get the index from the array
+export const convertPublishDateFormat = date => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr',
+                  'May', 'Jun', 'Jul', 'Aug',
+                  'Sep', 'Oct', 'Nov', 'Dec'];
+  const dateSections = date.split('-');
+  dateSections[2] = dateSections[2].slice(0,2);
+
+  return `${months[dateSections[1] - 1]} ${dateSections[2]}, ${dateSections[0]}`;
+};
+
+export const addCommaToNumber = number => {
+  while (/(\d+)(\d{3})/.test(number.toString())){
+    number = number.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  }
+  return number;
+};

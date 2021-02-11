@@ -8,19 +8,21 @@ import { SEARCH_RESULTS } from '../util/search_results';
 
 const Results = props => {
   const query = props.history.location.pathname;
-  // const [searchResults, setSearchResults] = useState(null);
-  const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
+  const [searchResults, setSearchResults] = useState(null);
+  // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
-    // fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
-  }, []);
+    // fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
+  }, [searchResults]);
 
   const displayResults = (
     <Grid className='search-results' centered padded>
       {
         // to be added - overlay with buttons for add to queue, add to watch later, and report
         // display on hover
-        searchResults.map(result => {
+        // look into why isn't loading initially
+        !searchResults ? 'loading' :
+         searchResults.map(result => {
           return <Grid.Row key={result.id.videoId}>
             <Grid.Column className='result-thumbnail' as={Link} to={`/video/${result.id.videoId}`} width={3} verticalAlign='middle'>
               {/* <Item.Image size='medium' src={result.snippet.thumbnails.medium.url} /> */}

@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
-import { Divider, Embed, Grid, Icon, Item, Image } from 'semantic-ui-react';
-import { fetchVideo } from '../util/api_util';
+import { Divider, Embed, Grid, Icon, Item, Image, Button } from 'semantic-ui-react';
+import { fetchRelatedVideos, fetchVideo } from '../util/api_util';
 import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
 import { RELATED_VIDEOS } from '../util/related_results';
 import { VIDEO_RESULT } from '../util/video_result';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
-  // const [videoData, setVideoData] = useState(null);
-  const [videoData, setVideoData] = useState(VIDEO_RESULT);
-  // const [relatedVideos, setRelatedVideos] = useState(null);
-  const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
+  const [videoData, setVideoData] = useState(null);
+  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
+  const [relatedVideos, setRelatedVideos] = useState(null);
+  // const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
 
   useEffect(() => {
-    // if(videoData) fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
+    fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
+    fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
   }, [])
 
   // refactor results and related videos to a single component later
   const displayRelatedVideos = (
     <Grid.Column width={5} className='related-videos'>
       {
+        !relatedVideos ? '' :
         relatedVideos.map(related => {
           if(related.snippet){
             return <Grid.Row className='related-container display-flex' key={related.id.videoId}>
@@ -76,13 +78,20 @@ const VideoShow = props => {
                 </Item.Content>
               </Item.Group>
               <Divider />
-                <Item.Group>
+              <Item.Group className='video-channel-info display-flex space-between'>
+                <Item.Group className='display-flex align-center'>
                   {/* use thumbnail as placeholder - no auth for channel api */}
                   <Image src={videoData.snippet.thumbnails.default.url} avatar />
                   <Item>
                     {videoData.snippet.channelTitle}
                   </Item>
                 </Item.Group>
+                <Item.Group className='video-channel-sub display-flex align-center'>
+                  <Button className='video-join' content='JOIN' />
+                  <Button className='video-subscribe' content='SUBSCRIBE' />
+                  <Icon name='bell outline' />
+                </Item.Group>
+              </Item.Group>
                 {/* add later - need to overlay and toogle for show more/less */}
                 {/* <Item className='display-linebreak'>
                   {videoData.snippet.description}

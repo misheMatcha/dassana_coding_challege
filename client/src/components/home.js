@@ -13,7 +13,7 @@ const Home = () => {
     // limit results to 15 due to daily limitations on get requests
     // hard code query as its the home page
     // and pull items only as it's the array we need
-    // fetchSearchResults(15, 'genshin lo-fi').then(data => setVideoList(data.items));
+    // fetchSearchResults(1, 'lo-fi').then(data => setVideoList(data.items));
   }, []);
 
   const displayVideos = () => {

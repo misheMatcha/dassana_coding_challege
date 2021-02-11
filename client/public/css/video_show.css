@@ -10,6 +10,12 @@
 .nowrap{
   white-space: nowrap;
 }
+.align-center{
+  align-items: center;
+}
+.no-margin{
+  margin: 0;
+}
 
 .ui.centered.padded.grid.video-show{
   background-color: #181818;
@@ -28,6 +34,28 @@
     .item.show-actions-icons{
       padding: 0 5px;
     }
+
+  .ui.items.video-channel-info{
+    /* background-color: blue; */
+  }
+  .ui.items.video-channel-sub{
+    margin: 0;
+  }
+    .ui.items.video-channel-sub button{
+      margin-right: 15px;
+      border-radius: 2px;
+    }
+      .ui.button.video-join{
+        background-color: transparent;
+        color: #3EA6FF;
+        border: 1px solid #3EA6FF;
+      }
+      .ui.button.video-subscribe{
+        background-color: #CC0001;
+        color: #FFFFFF;
+      }
+
+
   .five.wide.column.related-videos{
   }
     .ui.right.spaced.image{

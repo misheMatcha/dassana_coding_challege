@@ -1,12 +1,29 @@
-.ui.centered.padded.grid.video-show{
-  /* border: 1px solid blue; */
-  background-color: #181818;
-}
-
-  .ui.items.related-group{
-    display: flex;
-  }
-
 .display-linebreak{
   white-space: pre-line;
 }
+.display-flex{
+  display: flex;
+}
+
+.ui.centered.padded.grid.video-show{
+  background-color: #181818;
+  color: #AAAAAA;
+}
+  .related-container{
+    padding-bottom: 15px;
+  }
+  .five.wide.column.related-videos{
+  }
+    .ui.right.spaced.image{
+      width: 120px;
+      height: 90px;
+    }
+    .column.related-details{
+      overflow: hidden;
+    }
+      .column.related-details .header{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #FFFFFF;
+      }

@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image } from 'semantic-ui-react';
 import { fetchVideo } from '../util/api_util';
-import { convertPublishDateFormat, loading, preserveNewlineInString } from '../util/general_util';
+import { convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
 import { RELATED_VIDEOS } from '../util/related_results';
 import { VIDEO_RESULT } from '../util/video_result';
-import VideoResult from './video_result';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
@@ -20,16 +19,22 @@ const VideoShow = props => {
 
   // refactor results and related videos to a single component later
   const displayRelatedVideos = (
-    <Grid.Column width={4}>
+    <Grid.Column width={5} className='related-videos'>
       {
         relatedVideos.map(related => {
           if(related.snippet){
-            return <Item.Group className='related-group' key={related.id.videoId}>
-              <Item.Image className='related-image' src={related.snippet.thumbnails.medium.url} />
-              <Item>
-                {related.snippet.title}
-              </Item>
-            </Item.Group>
+            return <Grid.Row className='related-container display-flex' key={related.id.videoId}>
+              <Image spaced='right' src={related.snippet.thumbnails.default.url} />
+              <Grid.Column className='related-details' >
+                <Item.Header>{related.snippet.title}</Item.Header>
+                <Item.Description>
+                  {related.snippet.channelTitle}
+                  <Item>
+                    {timeSincePublished(related.snippet.publishedAt)}
+                  </Item>
+                </Item.Description>
+              </Grid.Column>
+            </Grid.Row>
           }
         })
       }
@@ -69,6 +74,7 @@ const VideoShow = props => {
                   </Item>
                 </Item.Group>
                 <Item className='display-linebreak'>
+                  {/* add overlay to 'show more' later */}
                   {videoData.snippet.description}
                 </Item>
               <Divider />

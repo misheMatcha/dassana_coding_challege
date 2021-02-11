@@ -9,8 +9,8 @@ import { VIDEO_RESULT } from '../util/video_result';
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
   const [videoData, setVideoData] = useState(null);
-  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
   const [relatedVideos, setRelatedVideos] = useState(null);
+  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
   // const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
 
   useEffect(() => {
@@ -19,10 +19,9 @@ const VideoShow = props => {
   }, [])
 
   // refactor results and related videos to a single component later
-  const displayRelatedVideos = (
-    <Grid.Column width={5} className='related-videos'>
+  const displayRelatedVideos = () => {
+    return <Grid.Column width={5} className='related-videos'>
       {
-        !relatedVideos ? '' :
         relatedVideos.map(related => {
           if(related.snippet){
             return <Grid.Row className='related-container display-flex' key={related.id.videoId}>
@@ -41,10 +40,10 @@ const VideoShow = props => {
         })
       }
     </Grid.Column>
-  );
+  };
   
-  const displayVideo = (
-    <Grid className='video-show' centered padded>
+  const displayVideo = () => {
+    return <Grid className='video-show' centered padded>
       <Grid.Row>
         <Grid.Column width={10}>
           <Embed
@@ -99,12 +98,12 @@ const VideoShow = props => {
               <Divider />
             </Item.Group>
         </Grid.Column>
-        {displayRelatedVideos}
+        {displayRelatedVideos()}
       </Grid.Row>
     </Grid>
-  );
+  };
 
-  return videoData && relatedVideos ? displayVideo : loading;
+  return videoData && relatedVideos ? displayVideo() : loading;
 };
 
 export default withRouter(VideoShow);

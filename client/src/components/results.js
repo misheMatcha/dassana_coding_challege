@@ -12,16 +12,16 @@ const Results = props => {
   // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
-    // fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
-  }, [searchResults]);
+    fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
+  }, []);
 
-  const displayResults = (
-    <Grid className='search-results' centered padded>
+  const displayResults = () => {
+    return <Grid className='search-results' centered padded>
       {
         // to be added - overlay with buttons for add to queue, add to watch later, and report
         // display on hover
         // look into why isn't loading initially
-        !searchResults ? 'loading' :
+        // !searchResults ? 'loading' :
          searchResults.map(result => {
           return <Grid.Row key={result.id.videoId}>
             <Grid.Column className='result-thumbnail' as={Link} to={`/video/${result.id.videoId}`} width={3} verticalAlign='middle'>
@@ -52,9 +52,9 @@ const Results = props => {
         })
       }
     </Grid>
-  );
+  };
 
-  return searchResults ? displayResults : loading;
+  return searchResults ? displayResults() : loading;
 };
 
 export default withRouter(Results);

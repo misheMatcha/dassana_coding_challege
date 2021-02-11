@@ -76,3 +76,10 @@ export const convertPublishDateFormat = date => {
 
   return `${months[dateSections[1] - 1]} ${dateSections[2]}, ${dateSections[0]}`;
 };
+
+export const addCommaToNumber = number => {
+  while (/(\d+)(\d{3})/.test(number.toString())){
+    number = number.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  }
+  return number;
+};

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image } from 'semantic-ui-react';
 import { fetchVideo } from '../util/api_util';
-import { convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
+import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
 import { RELATED_VIDEOS } from '../util/related_results';
 import { VIDEO_RESULT } from '../util/video_result';
 
@@ -50,19 +50,29 @@ const VideoShow = props => {
             placeholder={videoData.snippet.thumbnails.standard.url}
             source='youtube' />
             <Item.Group>
-              <Item.Header>
+              <Item.Header className='video-show-title'>
                 {videoData.snippet.title}
               </Item.Header>
-              <Item.Group>
+              <Item.Group className='display-flex space-between'>
                 <Item.Content>
-                  {videoData.statistics.viewCount} views • {convertPublishDateFormat(videoData.snippet.publishedAt)}
+                  {addCommaToNumber(videoData.statistics.viewCount)} views • {convertPublishDateFormat(videoData.snippet.publishedAt)}
                 </Item.Content>
-                <Item.Content>
-                  <Icon name='thumbs up' /> {videoData.statistics.likeCount}
-                  <Icon name='thumbs down' /> {videoData.statistics.dislikeCount}
-                  <Icon name='share' />
-                  <Icon name='add' />
-                  <Icon name='ellipsis horizontal' />
+                <Item.Content className='video-show-actions display-flex'>
+                  <Item className='nowrap show-actions-icons'>
+                    <Icon name='thumbs up' /> {videoData.statistics.likeCount}
+                  </Item>
+                  <Item className='nowrap show-actions-icons'>
+                    <Icon name='thumbs down' /> {videoData.statistics.dislikeCount}
+                  </Item>
+                  <Item className='show-actions-icons'>
+                    <Icon name='share' />
+                  </Item>
+                  <Item className='show-actions-icons'>
+                    <Icon name='add' />
+                  </Item>
+                  <Item className='show-actions-icons'>
+                    <Icon name='ellipsis horizontal' />
+                  </Item>
                 </Item.Content>
               </Item.Group>
               <Divider />
@@ -73,10 +83,10 @@ const VideoShow = props => {
                     {videoData.snippet.channelTitle}
                   </Item>
                 </Item.Group>
-                <Item className='display-linebreak'>
-                  {/* add overlay to 'show more' later */}
+                {/* add later - need to overlay and toogle for show more/less */}
+                {/* <Item className='display-linebreak'>
                   {videoData.snippet.description}
-                </Item>
+                </Item> */}
               <Divider />
             </Item.Group>
         </Grid.Column>
@@ -85,7 +95,7 @@ const VideoShow = props => {
     </Grid>
   );
 
-  return videoData ? displayVideo : loading;
+  return videoData && relatedVideos ? displayVideo : loading;
 };
 
 export default withRouter(VideoShow);

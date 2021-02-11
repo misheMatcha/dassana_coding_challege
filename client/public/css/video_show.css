@@ -4,14 +4,30 @@
 .display-flex{
   display: flex;
 }
+.space-between{
+  justify-content: space-between;
+}
+.nowrap{
+  white-space: nowrap;
+}
 
 .ui.centered.padded.grid.video-show{
   background-color: #181818;
   color: #AAAAAA;
 }
+  .header.video-show-title{
+    color: #FFFFFF;
+    font-size: 1.8vw;
+  }
   .related-container{
     padding-bottom: 15px;
   }
+  .content.video-show-actions{
+    /* border: 1px solid blue; */
+  }
+    .item.show-actions-icons{
+      padding: 0 5px;
+    }
   .five.wide.column.related-videos{
   }
     .ui.right.spaced.image{
@@ -26,4 +42,8 @@
         text-overflow: ellipsis;
         overflow: hidden;
         color: #FFFFFF;
+      }
+      .column.related-details .description{
+        font-size: 12px;
+        padding: 2px 0;
       }

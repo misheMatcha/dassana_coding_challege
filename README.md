@@ -37,8 +37,14 @@ Ex:
 - Limited testing due to YouTube API quota caps per day. Still looking into this particular challenge I'm still trying to understand how the quota was hit so quickly.
 - Figuring out how to convert the published time into specific increments (ex: 1 second ago, 3 weeks ago, etc).
   - Solution: Getting the difference of the current time and published time in milliseconds. Then checking the difference against each single increment. Then truncating the difference and returning a string, making a check to ensure it's singular if its '1'. Switch case wasn't applicable due to the comparisons I needed to make.
+  
+## Updates
+# 02/11/2020
+- Fix rendering for results and video show page.
+  - Changed constants to functions so that the mapping will run when invoked instead of at initial render when the data is undefined.
 
 ## Known Issues
+# 02/10/2020
 - Video show may not render, video API was tested but related video wasn't before quota cap
 - Search only accepts clicks on the magnifying glass, should also accept enter key
 - Font sizing issue on video show page where the video title slightly overlaps on wrapped text

@@ -1,3 +1,12 @@
 .ui.centered.padded.grid.video-show{
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+  background-color: #181818;
+}
+
+  .ui.items.related-group{
+    display: flex;
+  }
+
+.display-linebreak{
+  white-space: pre-line;
 }

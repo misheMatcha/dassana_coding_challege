@@ -11,6 +11,7 @@ const Navbar = props => {
 
   const submitSearch = () => {
     props.history.push(`/results/${query}`);
+    // add page title change after push for results later
   };
   
   return <Sticky>

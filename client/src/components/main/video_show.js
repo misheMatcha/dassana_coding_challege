@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image, Button } from 'semantic-ui-react';
-import { fetchRelatedVideos, fetchVideo } from '../util/api_util';
-import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
-import { RELATED_VIDEOS } from '../util/related_results';
-import { VIDEO_RESULT } from '../util/video_result';
+import { fetchRelatedVideos, fetchVideo } from '../../util/api_util';
+import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../../util/general_util';
+import { RELATED_VIDEOS } from '../../util/related_results';
+import { VIDEO_RESULT } from '../../util/video_result';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
-  const [videoData, setVideoData] = useState(null);
-  const [relatedVideos, setRelatedVideos] = useState(null);
-  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
-  // const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
+  // const [videoData, setVideoData] = useState(null);
+  // const [relatedVideos, setRelatedVideos] = useState(null);
+  const [videoData, setVideoData] = useState(VIDEO_RESULT);
+  const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
 
   useEffect(() => {
-    fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
-    fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
+    // fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
+    // fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
   }, [])
 
   // refactor results and related videos to a single component later

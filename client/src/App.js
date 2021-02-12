@@ -3,9 +3,9 @@ import { RenderRoute } from "./util/general_util";
 
 // components
 import Navbar from "./components/navbar";
-import Home from "./components/home";
-import Results from "./components/results";
-import VideoShow from "./components/video_show";
+import Home from "./components/main/home";
+import Results from "./components/main/results";
+import VideoShow from "./components/main/video_show";
 
 function App() {
   return <div id='app'>

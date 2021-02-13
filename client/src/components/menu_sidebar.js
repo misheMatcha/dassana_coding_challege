@@ -36,6 +36,7 @@ const MenuSidebar = props => {
 
   // should be running at O(1) because the longest list at most is 10~
   // need to verify
+  // to add later - best of had rounded icons
   const displayLink = whichList => {
     return linkLists[whichList].nameList.map((name, idx) => {
       return <Menu.Item key={idx}
@@ -66,13 +67,16 @@ const MenuSidebar = props => {
       inverted
       vertical
       visible={props.toggle}
-      // visible
       borderless
     >
       <Divider hidden />
       <Menu.Item fitted>
-        <Item.Content>
-          <Icon name='sidebar' /> YouTube
+        <Item.Content className='menu-sidebar-nav display-flex'>
+          <Icon name='sidebar' onClick={() => props.onChange()} />
+          <Link to='/' className='menu-sidebar-home'>
+            <Icon name='youtube play' />
+            <span>YouTube</span>
+          </Link>
         </Item.Content>
       </Menu.Item>
       <Divider />

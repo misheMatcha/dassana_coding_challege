@@ -4,11 +4,7 @@ import { Input, Menu, Icon, Item, Sticky, Grid } from 'semantic-ui-react'
 
 const Navbar = props => {
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    // console.log(props.toggleSidebar)
-  });
-
+  
   const handleInput = (event) => {
     setQuery(event.target.value)
   };

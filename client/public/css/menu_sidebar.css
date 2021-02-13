@@ -2,7 +2,7 @@
   width: 240px;
   background-color: #212121;
 }
-  .content.menu-sidebar-link{
+  .content.menu-sidebar-link, .header.menu-sidebar-header{
     padding-left: 25px;
     display: flex;
     align-items: center;
@@ -11,6 +11,33 @@
       color: #8C8C8C;
       font-size: 20px;
     }
-    .ui.icon.menu .item.menu-sidebar-link-name{
+    .ui.icon.menu .item.menu-sidebar-link-name, .ui.icon.menu .item.menu-sidebar-signin-text{
       text-align: left;
     }
+
+  .fitted.item.menu-sidebar-signin button{
+    background-color: transparent;
+    border: 1px solid #3EA6FF;
+    color: #3EA6FF;
+  }
+
+  .header.menu-sidebar-header{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: 700;
+  }
+
+  .ui.items.menu-sidebar-footer{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 25px;
+  }
+  .ui.inverted.icon.menu .item.menu-sidebar-footer-link{
+    margin: 0;
+    display: flex;
+    width: auto;
+    text-align: left;
+    min-width: 0;
+    padding: 5px;
+    color: #AAAAAA;
+  }

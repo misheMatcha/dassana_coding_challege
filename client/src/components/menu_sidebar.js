@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Sidebar, Icon, Divider, Item, Button } from 'semantic-ui-react';
+import { Menu, Sidebar, Icon, Divider, Item, Button, Grid, List } from 'semantic-ui-react';
 
 const MenuSidebar = props => {
     const linkLists = {
@@ -10,7 +10,7 @@ const MenuSidebar = props => {
       },
       user: {
         nameList: ['Library', 'History'],
-        iconList: ['clone', 'undo alternate']
+        iconList: ['clone', 'history']
       },
       bestOf: {
         nameList: ['Music', 'Sports', 'Gaming', 'Movies & Shows', 'News', 'Live', 'Fashion & Beauty', 'Learning', 'Spotlight', '360° Video'],
@@ -29,7 +29,10 @@ const MenuSidebar = props => {
         iconList: ['setting', 'flag', 'help circle', 'comment']
       }
   }
-  const footerList = ['About', 'Press', 'Copyright', 'Contact us', 'Creators', 'Advertise', 'Developers'];
+  const footerList = {
+    copyright: ['About', 'Press', 'Copyright', 'Contact us', 'Creators', 'Advertise', 'Developers'],
+    terms: ['Terms', 'Privacy', 'Policy & Safety', 'How YouTube works', 'Test new features']
+  };
 
   // should be running at O(1) because the longest list at most is 10~
   // need to verify
@@ -49,7 +52,7 @@ const MenuSidebar = props => {
 
   const displayFooter = list => {
     return list.map((name, idx) => {
-      return <Item key={idx}>
+      return <Item key={idx} className='menu-sidebar-footer-link'>
         {name}
       </Item>
     });
@@ -77,26 +80,30 @@ const MenuSidebar = props => {
       <Divider />
       {displayLink('user')} 
       <Divider />
-      <Menu.Item fitted>
-        <Item>Sign in to like videos, comment, and subscribe.</Item>
-        <Button icon labelPosition='left'>
-          <Icon name='youtube' /> SIGN IN
+      <Menu.Item fitted className='menu-sidebar-signin'>
+        <Item className='menu-sidebar-signin-text'>Sign in to like videos, comment, and subscribe.</Item>
+        <Button>
+          <Icon name='user circle' /> SIGN IN
         </Button>
       </Menu.Item>
       <Divider />
-      <Item.Header>BEST OF YOUTUBE</Item.Header>
+      <Item.Header className='menu-sidebar-header'>BEST OF YOUTUBE</Item.Header>
       {displayLink('bestOf')} 
       <Divider />
       {displayLink('browse')} 
       <Divider />
-      <Item.Header>MORE FROM YOUTUBE</Item.Header>
+      <Item.Header className='menu-sidebar-header'>MORE FROM YOUTUBE</Item.Header>
       {displayLink('moreFrom')} 
       <Divider />
       {displayLink('feedback')} 
       <Divider />
-      <Item.Group>
-        {displayFooter(footerList)}
+      <Item.Group className='menu-sidebar-footer'>
+        {displayFooter(footerList.copyright)}
       </Item.Group>
+      <Item.Group className='menu-sidebar-footer'>
+        {displayFooter(footerList.terms)}
+      </Item.Group>
+      <Item>© 2021 Google LLC</Item>
     </Sidebar>
   };
 

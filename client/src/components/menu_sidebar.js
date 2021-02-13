@@ -3,112 +3,53 @@ import { Link } from 'react-router-dom';
 import { Menu, Sidebar, Icon, Divider, Item, Button } from 'semantic-ui-react';
 
 const MenuSidebar = props => {
-  const generalLinks = () => {
-    return <Menu.Item>
-    <Item as={Link} to='/'>
-      <Icon name='home' /> Home
-    </Item>
-    <Item>
-      <Icon name='fire' /> Trending
-    </Item>
-    <Item>
-      <Icon name='th list' /> Subscriptions
-    </Item>
-  </Menu.Item>
+    const linkLists = {
+      home: {
+        nameList: ['Home', 'Trending', 'Subscriptions'],
+        iconList: ['home', 'fire', 'th list']
+      },
+      user: {
+        nameList: ['Library', 'History'],
+        iconList: ['clone', 'undo alternate']
+      },
+      bestOf: {
+        nameList: ['Music', 'Sports', 'Gaming', 'Movies & Shows', 'News', 'Live', 'Fashion & Beauty', 'Learning', 'Spotlight', '360° Video'],
+        iconList: ['music', 'trophy', 'gamepad', 'film', 'newspaper', 'wifi', 'pied piper hat', 'lightbulb', 'youtube play', 'find']
+      },
+      browse: {
+        nameList: ['Browse channels'],
+        iconList: ['add circle']
+      },
+      moreFrom: {
+        nameList: ['YouTube Premium', 'Live'],
+        iconList: ['youtube', 'wifi']
+      },
+      feedback: {
+        nameList: ['Settings', 'Report history', 'Help', 'Send feedback'],
+        iconList: ['setting', 'flag', 'help circle', 'comment']
+      }
+  }
+  const footerList = ['About', 'Press', 'Copyright', 'Contact us', 'Creators', 'Advertise', 'Developers'];
+
+  // should be running at O(1) because the longest list at most is 10~
+  // need to verify
+  const displayLink = whichList => {
+    return linkLists[whichList].nameList.map((name, idx) => {
+      return <Menu.Item key={idx} as={Link} to='/' fitted>
+        <Icon name={linkLists[whichList].iconList[idx]} />
+        {name}
+      </Menu.Item>
+    });
   };
 
-  const userLinks = () => {
-    return <Menu.Item>
-      <Item>
-        <Icon name='clone' /> Library
+  const displayFooter = list => {
+    return list.map((name, idx) => {
+      return <Item key={idx}>
+        {name}
       </Item>
-      <Item>
-        <Icon name='undo alternate' /> History
-      </Item>
-    </Menu.Item>
+    });
   };
 
-  const bestOfLinks = () => {
-    return <Menu.Item>
-      <Item.Header>
-        BEST OF YOUTUBE
-      </Item.Header>
-      <Item>
-        <Icon name='music' /> Music
-        </Item>
-      <Item>
-        <Icon name='trophy' /> Sports
-        </Item>
-      <Item>
-        <Icon name='gamepad' /> Gaming
-        </Item>
-      <Item>
-        <Icon name='film' /> Movies & Shows
-        </Item>
-      <Item>
-        <Icon name='newspaper' /> News
-        </Item>
-      <Item>
-        <Icon name='wifi' /> Live
-        </Item>
-      <Item>
-        <Icon name='pied piper hat' /> Fashion & Beauty
-        </Item>
-      <Item>
-        <Icon name='lightbulb' /> Learning
-        </Item>
-      <Item>
-        <Icon name='youtube play' /> Spotlight
-        </Item>
-      <Item>
-        <Icon name='find' /> 360° Video
-        </Item>
-    </Menu.Item>
-  };
-
-  const helpLinks = () => {
-    return <Menu.Item>
-      <Item>
-        <Icon name='setting' /> Settings
-      </Item>
-      <Item>
-        <Icon name='flag' /> Report history
-      </Item>
-      <Item>
-        <Icon name='help circle' /> Help
-      </Item>
-      <Item>
-        <Icon name='comment' /> Send feedback
-      </Item>
-    </Menu.Item>
-  };
-
-  const footerLinks = () => {
-    return <Menu.Item>
-      <Item>
-        About
-      </Item>
-      <Item>
-        Press
-      </Item>
-      <Item>
-        Copyright
-      </Item>
-      <Item>
-        Contact us
-      </Item>
-      <Item>
-        Creators
-      </Item>
-      <Item>
-        Advertise
-      </Item>
-      <Item>
-        Developers
-      </Item>
-    </Menu.Item>
-  };
-  
   const displaySidebar = () => {
     return <Sidebar
       as={Menu}
@@ -116,37 +57,39 @@ const MenuSidebar = props => {
       icon='labeled'
       inverted
       vertical
-      visible={props.toggle}
+      // visible={props.toggle}
+      visible
+      borderless
     >
-      <Menu.Item>
-        <Icon name='sidebar' onClick={() => props.onChange()} />
-        YouTube
+      <Divider hidden />
+      <Menu.Item fitted>
+        <Icon name='sidebar' /> YouTube
       </Menu.Item>
-      {generalLinks()}
-      {userLinks()}
-      <Menu.Item>
-        <Item.Description>
-          Sign in to like videos, comment, and subscribe.
-        </Item.Description>
-        <Button><Icon name='youtube' /> SIGN IN</Button>
+      <Divider />
+      {displayLink('home')} 
+      <Divider />
+      {displayLink('user')} 
+      <Divider />
+      <Menu.Item fitted>
+        <Item>Sign in to like videos, comment, and subscribe.</Item>
+        <Button icon labelPosition='left'>
+          <Icon name='youtube' /> SIGN IN
+        </Button>
       </Menu.Item>
-      {bestOfLinks()}
-      <Menu.Item>
-        <Icon name='add circle' /> Browse channels
-      </Menu.Item>
-      <Menu.Item>
-        <Item.Header>
-          MORE FROM YOUTUBE
-        </Item.Header>
-        <Item>
-          <Icon name='youtube' /> YouTube Premium
-        </Item>
-        <Item>
-          <Icon name='wifi' /> Live
-        </Item>
-      </Menu.Item>
-      {helpLinks()}
-      {footerLinks()}
+      <Divider />
+      <Item.Header>BEST OF YOUTUBE</Item.Header>
+      {displayLink('bestOf')} 
+      <Divider />
+      {displayLink('browse')} 
+      <Divider />
+      <Item.Header>MORE FROM YOUTUBE</Item.Header>
+      {displayLink('moreFrom')} 
+      <Divider />
+      {displayLink('feedback')} 
+      <Divider />
+      <Item.Group>
+        {displayFooter(footerList)}
+      </Item.Group>
     </Sidebar>
   };
 

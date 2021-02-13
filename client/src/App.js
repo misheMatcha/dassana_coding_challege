@@ -19,7 +19,7 @@ function App() {
   return <div id='app'>
     {/* potentially add context later */}
     <Navbar onChange={() => toggleSidebarDisplay()} />
-    <Sidebar toggle={displaySidebar} />
+    <Sidebar toggle={displaySidebar} onChange={() => toggleSidebarDisplay()} />
     <Switch>
       <RenderRoute exact path='/' component={Home} />
       <RenderRoute exact path='/results/:search_query' component={Results} />

@@ -36,6 +36,24 @@ Ex:
 
 ![sidebar](https://user-images.githubusercontent.com/52799217/107845173-614aae80-6d8e-11eb-80eb-2a33ca8c104f.gif)
 
+Creating a function to help display the links and help reduce repetitive code:
+
+```javascript
+const displayLink = whichList => {
+    return linkLists[whichList].nameList.map((name, idx) => {
+      return <Menu.Item key={idx}
+        as={Link} to='/'
+        fitted
+        >
+          <Item.Content className='menu-sidebar-link'>
+            <Icon name={linkLists[whichList].iconList[idx]} />
+            <Item className='menu-sidebar-link-name'>{name}</Item>
+          </Item.Content>
+      </Menu.Item>
+    });
+  };
+```
+
 ## Challenges
 - Learning and implementing two technologies that I'm unfamiliar with, YouTube API and Semantic-UI.
 - Limited testing due to YouTube API quota caps per day. Still looking into this particular challenge I'm still trying to understand how the quota was hit so quickly.

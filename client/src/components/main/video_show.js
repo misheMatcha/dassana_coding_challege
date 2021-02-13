@@ -8,14 +8,14 @@ import { VIDEO_RESULT } from '../../util/video_result';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
-  // const [videoData, setVideoData] = useState(null);
-  // const [relatedVideos, setRelatedVideos] = useState(null);
-  const [videoData, setVideoData] = useState(VIDEO_RESULT);
-  const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
+  const [videoData, setVideoData] = useState(null);
+  const [relatedVideos, setRelatedVideos] = useState(null);
+  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
+  // const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
 
   useEffect(() => {
-    // fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
-    // fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
+    fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
+    fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
   }, [])
 
   // refactor results and related videos to a single component later

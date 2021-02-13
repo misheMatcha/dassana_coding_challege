@@ -8,11 +8,11 @@ import { SEARCH_RESULTS } from '../../util/search_results';
 
 const Results = props => {
   const query = props.history.location.pathname;
-  // const [searchResults, setSearchResults] = useState(null);
-  const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
+  const [searchResults, setSearchResults] = useState(null);
+  // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
-    // fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
+    fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
   }, []);
 
   const displayResults = () => {

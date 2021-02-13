@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image, Button } from 'semantic-ui-react';
-import { fetchRelatedVideos, fetchVideo } from '../util/api_util';
-import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../util/general_util';
-import { RELATED_VIDEOS } from '../util/related_results';
-import { VIDEO_RESULT } from '../util/video_result';
+import { fetchRelatedVideos, fetchVideo } from '../../util/api_util';
+import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../../util/general_util';
+import { RELATED_VIDEOS } from '../../util/related_results';
+import { VIDEO_RESULT } from '../../util/video_result';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;

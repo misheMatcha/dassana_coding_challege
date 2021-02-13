@@ -4,7 +4,7 @@ import { Input, Menu, Icon, Item, Sticky, Grid } from 'semantic-ui-react'
 
 const Navbar = props => {
   const [query, setQuery] = useState('');
-
+  
   const handleInput = (event) => {
     setQuery(event.target.value)
   };
@@ -17,9 +17,9 @@ const Navbar = props => {
   return <Sticky>
     <Grid className='navbar' centered columns='equal' padded>
       <Grid.Column className='navbar-sidebar' verticalAlign='middle'>
-        <Icon name='sidebar' />
+        <Icon name='sidebar' onClick={() => props.onChange()} />
         <Link to='/'>
-          <Icon name='youtube play'/> <span className='nav-title'>YouTube</span>
+          <Icon name='youtube play' className='navbar-icon'/> <span className='nav-title'>YouTube</span>
         </Link>
       </Grid.Column>
       <Grid.Column width={7}>

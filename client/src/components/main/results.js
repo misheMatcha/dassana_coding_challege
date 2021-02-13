@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Image } from 'semantic-ui-react';
-import { fetchSearchResults } from '../util/api_util';
-import { loading, timeSincePublished } from '../util/general_util';
-import { SEARCH_RESULTS } from '../util/search_results';
+import { fetchSearchResults } from '../../util/api_util';
+import { loading, timeSincePublished } from '../../util/general_util';
+import { SEARCH_RESULTS } from '../../util/search_results';
 
 const Results = props => {
   const query = props.history.location.pathname;

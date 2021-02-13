@@ -1,0 +1,67 @@
+.ui.inverted.vertical.labeled.icon.ui.overlay.left.visible.sidebar.menu{
+  width: 240px;
+  background-color: #212121;
+}
+  .content.menu-sidebar-nav{
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 23px;
+  }
+    .content.menu-sidebar-nav .sidebar.icon{
+      font-size: 23px;
+      margin: 0;
+    }
+    .menu-sidebar-home{
+      color: #FF0101;
+    }
+      .menu-sidebar-home span{
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #FFFFFF;
+      }
+    
+  .content.menu-sidebar-link, .header.menu-sidebar-header{
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+  }
+    .content.menu-sidebar-link i{
+      color: #8C8C8C;
+      font-size: 20px;
+    }
+    .ui.icon.menu .item.menu-sidebar-link-name, .ui.icon.menu .item.menu-sidebar-signin-text, .ui.inverted.icon.menu .item.sidebar-copyright{
+      text-align: left;
+    }
+
+  .fitted.item.menu-sidebar-signin button{
+    background-color: transparent;
+    border: 1px solid #3EA6FF;
+    color: #3EA6FF;
+  }
+
+  .header.menu-sidebar-header{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: 700;
+    color: #8C8C8C;
+  }
+
+  .ui.items.menu-sidebar-footer{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 25px;
+  }
+  .ui.inverted.icon.menu .item.menu-sidebar-footer-link{
+    margin: 0;
+    display: flex;
+    width: auto;
+    text-align: left;
+    min-width: 0;
+    padding: 5px;
+    color: #AAAAAA;
+  }
+
+  .ui.inverted.icon.menu .item.sidebar-copyright{
+    color: #717171;
+    font-size: 11px;
+    padding-left: 25px;
+  }

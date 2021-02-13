@@ -23,7 +23,7 @@ const Navbar = props => {
       <Grid.Column className='navbar-sidebar' verticalAlign='middle'>
         <Icon name='sidebar' onClick={() => props.onChange()} />
         <Link to='/'>
-          <Icon name='youtube play'/> <span className='nav-title'>YouTube</span>
+          <Icon name='youtube play' className='navbar-icon'/> <span className='nav-title'>YouTube</span>
         </Link>
       </Grid.Column>
       <Grid.Column width={7}>

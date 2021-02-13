@@ -65,8 +65,8 @@ const MenuSidebar = props => {
       icon='labeled'
       inverted
       vertical
-      // visible={props.toggle}
-      visible
+      visible={props.toggle}
+      // visible
       borderless
     >
       <Divider hidden />
@@ -103,7 +103,8 @@ const MenuSidebar = props => {
       <Item.Group className='menu-sidebar-footer'>
         {displayFooter(footerList.terms)}
       </Item.Group>
-      <Item>© 2021 Google LLC</Item>
+      <Item className='sidebar-copyright'>© 2021 Google LLC</Item>
+      <Divider hidden />
     </Sidebar>
   };
 

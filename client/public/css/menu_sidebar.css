@@ -11,7 +11,7 @@
       color: #8C8C8C;
       font-size: 20px;
     }
-    .ui.icon.menu .item.menu-sidebar-link-name, .ui.icon.menu .item.menu-sidebar-signin-text{
+    .ui.icon.menu .item.menu-sidebar-link-name, .ui.icon.menu .item.menu-sidebar-signin-text, .ui.inverted.icon.menu .item.sidebar-copyright{
       text-align: left;
     }
 
@@ -25,6 +25,7 @@
     padding-top: 7px;
     padding-bottom: 7px;
     font-weight: 700;
+    color: #8C8C8C;
   }
 
   .ui.items.menu-sidebar-footer{
@@ -40,4 +41,10 @@
     min-width: 0;
     padding: 5px;
     color: #AAAAAA;
+  }
+
+  .ui.inverted.icon.menu .item.sidebar-copyright{
+    color: #717171;
+    font-size: 11px;
+    padding-left: 25px;
   }

@@ -8,6 +8,7 @@ import Sidebar from "./components/menu_sidebar";
 import Home from "./components/main/home";
 import Results from "./components/main/results";
 import VideoShow from "./components/main/video_show";
+import Error404 from "./components/main/error_404";
 
 function App() {
   const [displaySidebar, setDisplaySidebar] = useState(false);
@@ -24,6 +25,7 @@ function App() {
       <RenderRoute exact path='/' component={Home} />
       <RenderRoute exact path='/results/:search_query' component={Results} />
       <RenderRoute exact path='/video/:id' component={VideoShow} />
+      <RenderRoute exact path='/404' component={Error404} />
     </Switch>
   </div>
 }

@@ -14,24 +14,17 @@ function App() {
 
   const toggleSidebarDisplay = () => {
     setDisplaySidebar(!displaySidebar);
-    alert(displaySidebar)
   };
-
-  useEffect(() => {
-    // console.log(displaySidebar)
-  });
-
+  
   return <div id='app'>
+    {/* potentially add context later */}
     <Navbar onChange={() => toggleSidebarDisplay()} />
-    {/* help keep sidebar on left */}
-    <div className='display-flex'>
-      <Sidebar />
-      <Switch>
-        <RenderRoute exact path='/' component={Home} />
-        <RenderRoute exact path='/results/:search_query' component={Results} />
-        <RenderRoute exact path='/video/:id' component={VideoShow} />
-      </Switch>
-    </div>
+    <Sidebar toggle={displaySidebar} />
+    <Switch>
+      <RenderRoute exact path='/' component={Home} />
+      <RenderRoute exact path='/results/:search_query' component={Results} />
+      <RenderRoute exact path='/video/:id' component={VideoShow} />
+    </Switch>
   </div>
 }
 

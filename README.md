@@ -32,6 +32,10 @@ Ex:
 
 ![yt_resize1](https://user-images.githubusercontent.com/52799217/107609586-388eb180-6bf4-11eb-944a-541d10fb582d.gif)
 
+- Sidebar
+
+![sidebar](https://user-images.githubusercontent.com/52799217/107845173-614aae80-6d8e-11eb-80eb-2a33ca8c104f.gif)
+
 ## Challenges
 - Learning and implementing two technologies that I'm unfamiliar with, YouTube API and Semantic-UI.
 - Limited testing due to YouTube API quota caps per day. Still looking into this particular challenge I'm still trying to understand how the quota was hit so quickly.
@@ -39,13 +43,19 @@ Ex:
   - Solution: Getting the difference of the current time and published time in milliseconds. Then checking the difference against each single increment. Then truncating the difference and returning a string, making a check to ensure it's singular if its '1'. Switch case wasn't applicable due to the comparisons I needed to make.
   
 ## Updates
+### 02/12/2020
+- Add sidebar. Includes the ability to toggle between being displayed and being hidden.
+- Removed fetching from home page. Keeping static data as fetching is only required for searching and video display.
 ### 02/11/2020
 - Fix rendering for results and video show page.
   - Changed constants to functions so that the mapping will run when invoked instead of at initial render when the data is undefined.
 
 ## Known Issues
+### 02/12/2020
+- Hovering color issue on sidebar YouTube icon
+- Navbar styling needs to fixed to be more aligned with the sidebar to prevent visual conflicts
 ### 02/10/2020
-- Video show may not render, video API was tested but related video wasn't before quota cap
+- ~Video show may not render, video API was tested but related video wasn't before quota cap~ (fixed: 02/11/2020)
 - Search only accepts clicks on the magnifying glass, should also accept enter key
 - Font sizing issue on video show page where the video title slightly overlaps on wrapped text
 - Results and related videos do not have a hover options for adding to queue, watch later, or a report button
@@ -55,6 +65,8 @@ Ex:
 - Related videos do not have links
 
 ## Future Features
-- Sidebar for a more complete experience
+- ~Sidebar for a more complete experience~ (added: 02/12/2020)
 - Comments
 - Video description with show more/less toggle
+- 404/Error page
+- Hosting for easier access instead of cloning the repo

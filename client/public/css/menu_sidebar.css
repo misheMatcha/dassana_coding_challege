@@ -1,3 +1,16 @@
 .ui.inverted.vertical.labeled.icon.ui.overlay.left.visible.sidebar.menu{
   width: 240px;
+  background-color: #212121;
 }
+  .content.menu-sidebar-link{
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+  }
+    .content.menu-sidebar-link i{
+      color: #8C8C8C;
+      font-size: 20px;
+    }
+    .ui.icon.menu .item.menu-sidebar-link-name{
+      text-align: left;
+    }

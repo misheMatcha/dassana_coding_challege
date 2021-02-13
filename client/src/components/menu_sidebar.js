@@ -35,9 +35,14 @@ const MenuSidebar = props => {
   // need to verify
   const displayLink = whichList => {
     return linkLists[whichList].nameList.map((name, idx) => {
-      return <Menu.Item key={idx} as={Link} to='/' fitted>
-        <Icon name={linkLists[whichList].iconList[idx]} />
-        {name}
+      return <Menu.Item key={idx}
+        as={Link} to='/'
+        fitted
+        >
+          <Item.Content className='menu-sidebar-link'>
+            <Icon name={linkLists[whichList].iconList[idx]} />
+            <Item className='menu-sidebar-link-name'>{name}</Item>
+          </Item.Content>
       </Menu.Item>
     });
   };
@@ -63,7 +68,9 @@ const MenuSidebar = props => {
     >
       <Divider hidden />
       <Menu.Item fitted>
-        <Icon name='sidebar' /> YouTube
+        <Item.Content>
+          <Icon name='sidebar' /> YouTube
+        </Item.Content>
       </Menu.Item>
       <Divider />
       {displayLink('home')} 

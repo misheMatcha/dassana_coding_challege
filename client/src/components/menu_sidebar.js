@@ -40,7 +40,7 @@ const MenuSidebar = props => {
   const displayLink = whichList => {
     return linkLists[whichList].nameList.map((name, idx) => {
       return <Menu.Item key={idx}
-        as={Link} to='/'
+        as={Link} to={name === 'Home' ? '/' : '/page-not-found'}
         fitted
         >
           <Item.Content className='menu-sidebar-link'>

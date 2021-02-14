@@ -4,21 +4,22 @@
 }
   .middle.aligned.column.navbar-sidebar{
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 20px;
+    font-size: 23px;
   }
     .sidebar.icon{
-      font-size: 20px;
       margin-right: 20px;
-    }
-    .youtube.play.icon.navbar-icon{
-      font-size: 25px;
-      color: #FF0101;
-      margin: 0;
+      cursor: pointer;
     }
     .nav-title{
-      color: #FFFFFF;
+      color: #FF0101;
     }
-    
+      .nav-title:hover{
+        color: #FF0101;
+      }
+      .nav-title span{
+        color: #FFFFFF;
+      }
+
   .ui.fluid.action.input.navbar-searchbar{
     border: 1px solid #303030;
   }
@@ -43,16 +44,12 @@
   .microphone.icon{
     font-size: 20px;
   }
-  
-  .video.camera.icon{
-    font-size: 20px;
-    margin-right: 25px;
-  }
+
   .grid.layout.icon{
     font-size: 20px;
-    margin-right: 25px;
+    padding: 0 15px;
   }
-  .bell.icon{
+  .ellipsis.vertical.icon{
     font-size: 20px;
-    margin-right: 25px;
+    padding: 0 15px;
   }

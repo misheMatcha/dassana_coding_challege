@@ -40,7 +40,7 @@ const MenuSidebar = props => {
   const displayLink = whichList => {
     return linkLists[whichList].nameList.map((name, idx) => {
       return <Menu.Item key={idx}
-        as={Link} to='/'
+        as={Link} to={name === 'Home' ? '/' : '/page-not-found'}
         fitted
         >
           <Item.Content className='menu-sidebar-link'>
@@ -80,9 +80,9 @@ const MenuSidebar = props => {
         </Item.Content>
       </Menu.Item>
       <Divider />
-      {displayLink('home')} 
+      {displayLink('home')}
       <Divider />
-      {displayLink('user')} 
+      {displayLink('user')}
       <Divider />
       <Menu.Item fitted className='menu-sidebar-signin'>
         <Item className='menu-sidebar-signin-text'>Sign in to like videos, comment, and subscribe.</Item>
@@ -92,14 +92,14 @@ const MenuSidebar = props => {
       </Menu.Item>
       <Divider />
       <Item.Header className='menu-sidebar-header'>BEST OF YOUTUBE</Item.Header>
-      {displayLink('bestOf')} 
+      {displayLink('bestOf')}
       <Divider />
-      {displayLink('browse')} 
+      {displayLink('browse')}
       <Divider />
       <Item.Header className='menu-sidebar-header'>MORE FROM YOUTUBE</Item.Header>
-      {displayLink('moreFrom')} 
+      {displayLink('moreFrom')}
       <Divider />
-      {displayLink('feedback')} 
+      {displayLink('feedback')}
       <Divider />
       <Item.Group className='menu-sidebar-footer'>
         {displayFooter(footerList.copyright)}

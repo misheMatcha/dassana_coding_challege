@@ -1,21 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image, Button } from 'semantic-ui-react';
+
+// util
 import { fetchRelatedVideos, fetchVideo } from '../../util/api_util';
 import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../../util/general_util';
 import { RELATED_VIDEOS } from '../../util/related_results';
 import { VIDEO_RESULT } from '../../util/video_result';
 
+// context
+import { ApiToggleContext } from './api_toggle_context';
+
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
   const [videoData, setVideoData] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState(null);
-  // const [videoData, setVideoData] = useState(VIDEO_RESULT);
-  // const [relatedVideos, setRelatedVideos] = useState(RELATED_VIDEOS);
+  const { toggleApi } = useContext(ApiToggleContext);
 
   useEffect(() => {
-    fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
-    fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
+    if(toggleApi){
+      fetchVideo(videoId.slice(7))
+        .then(data => setVideoData(data.items[0]))
+        .catch(err => props.history.push('/404'))
+      fetchRelatedVideos(6, videoId.slice(7))
+        .then(data => setRelatedVideos(data.items))
+        .catch(err => props.history.push('/404'))
+    }else{
+      setVideoData(VIDEO_RESULT);
+      setRelatedVideos(RELATED_VIDEOS);
+    }
   }, [])
 
   // refactor results and related videos to a single component later
@@ -41,7 +54,7 @@ const VideoShow = props => {
       }
     </Grid.Column>
   };
-  
+
   const displayVideo = () => {
     return <Grid className='video-show' centered padded>
       <Grid.Row>

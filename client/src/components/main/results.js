@@ -1,31 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Image } from 'semantic-ui-react';
-import { fetchSearchResults } from '../../util/api_util';
+
+// util
+import { checkFetch, fetchSearchResults, fetchTest } from '../../util/api_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
 
+// context
+import { ApiToggleContext } from './api_toggle_context';
+
 const Results = props => {
   const query = props.history.location.pathname;
+  const { toggleApi } = useContext(ApiToggleContext);
   const [searchResults, setSearchResults] = useState(null);
-  // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
 
   useEffect(() => {
-    fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
-  }, []);
+    if(toggleApi){
+      fetchSearchResults(10 ,query.slice(9))
+        .then(data => setSearchResults(data.items))
+        .catch(err => props.history.push('/404'))
+    }else{
+        setSearchResults(SEARCH_RESULTS);
+      }
+  }, [toggleApi]);
 
   const displayResults = () => {
     return <Grid className='search-results' centered padded>
       {
         // to be added - overlay with buttons for add to queue, add to watch later, and report
         // display on hover
-        // look into why isn't loading initially
-        // !searchResults ? 'loading' :
-         searchResults.map(result => {
-          return <Grid.Row key={result.id.videoId}>
+         searchResults.map((result, idx) => {
+          return <Grid.Row key={idx}>
             <Grid.Column className='result-thumbnail' as={Link} to={`/video/${result.id.videoId}`} width={3} verticalAlign='middle'>
-              {/* <Item.Image size='medium' src={result.snippet.thumbnails.medium.url} /> */}
               <Image src={result.snippet.thumbnails.medium.url} />
             </Grid.Column>
             <Grid.Column className='result-details' as={Link} to={`/video/${result.id.videoId}`} width={8}>
@@ -54,7 +62,14 @@ const Results = props => {
     </Grid>
   };
 
+  const testingFetchTimeout = () => {
+    return <div>
+      testing
+    </div>
+  }
+
   return searchResults ? displayResults() : loading;
+  // return searchResults ? testingFetchTimeout() : loading;
 };
 
 export default withRouter(Results);

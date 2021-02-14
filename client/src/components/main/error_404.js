@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Item } from 'semantic-ui-react';
+import { Grid, Image, Item } from 'semantic-ui-react';
 
 const Error404 = () => {
   const display404 = () => {
@@ -9,6 +9,9 @@ const Error404 = () => {
         // ex: video/t/:id
         //     results/f/:query
     return <Item.Group>
+      {/* <img src='/images/YouTube-error.png' /> */}
+      {/* <Image src='/images/YouTube-error.png' size='medium' /> */}
+      <Image src='/images/youtube_error.svg' />
       <Item>
         This page isn't available due to YouTube API quota limits. Sorry about that.
       </Item>

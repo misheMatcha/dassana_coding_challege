@@ -13,17 +13,17 @@ import { ApiToggleContext } from './api_toggle_context';
 
 const Results = props => {
   const query = props.history.location.pathname;
-  const [searchResults, setSearchResults] = useState(null);
-  // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
   const { toggleApi, setToggleApi } = useContext(ApiToggleContext);
+  const [searchResults, setSearchResults] = useState(null);
 
   useEffect(() => {
     if(toggleApi){
-      // fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
+      fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
     }else{
       setSearchResults(SEARCH_RESULTS);
     }
-  }, []);
+    // setSearchResults(SEARCH_RESULTS);
+  }, [toggleApi]);
 
   const displayResults = () => {
     return <Grid className='search-results' centered padded>
@@ -33,7 +33,6 @@ const Results = props => {
          searchResults.map((result, idx) => {
           return <Grid.Row key={idx}>
             <Grid.Column className='result-thumbnail' as={Link} to={`/video/${result.id.videoId}`} width={3} verticalAlign='middle'>
-              {/* <Item.Image size='medium' src={result.snippet.thumbnails.medium.url} /> */}
               <Image src={result.snippet.thumbnails.medium.url} />
             </Grid.Column>
             <Grid.Column className='result-details' as={Link} to={`/video/${result.id.videoId}`} width={8}>

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams, withRouter } from 'react-router-dom';
-import { Input, Menu, Icon, Item, Sticky, Grid } from 'semantic-ui-react'
+import { Input, Menu, Icon, Item, Sticky, Grid, Radio, Label, Button } from 'semantic-ui-react'
+
+// context
+import { ApiToggleContext } from './main/api_toggle_context';
 
 const Navbar = props => {
   const [query, setQuery] = useState('');
+  const { toggleApi, setToggleApi } = useContext(ApiToggleContext);
   
   const handleInput = (event) => {
     setQuery(event.target.value)
@@ -31,9 +35,9 @@ const Navbar = props => {
         <Icon name='microphone' />
       </Grid.Column>
       <Grid.Column verticalAlign='middle'>
-        <Icon name='video camera' />
+        <Button content={toggleApi ? 'API On' : 'API Off'} onClick={() => setToggleApi(!toggleApi)} />
         <Icon name='grid layout' />
-        <Icon name='bell' />
+        <Icon name='ellipsis vertical' />
       </Grid.Column>
     </Grid>
   </Sticky>

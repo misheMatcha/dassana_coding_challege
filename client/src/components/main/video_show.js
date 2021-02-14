@@ -15,7 +15,7 @@ const VideoShow = props => {
   const videoId = props.history.location.pathname;
   const [videoData, setVideoData] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState(null);
-  const { toggleApi, setToggleApi } = useContext(ApiToggleContext);
+  const { toggleApi } = useContext(ApiToggleContext);
 
   useEffect(() => {
     if(toggleApi){

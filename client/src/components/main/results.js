@@ -13,7 +13,7 @@ import { ApiToggleContext } from './api_toggle_context';
 
 const Results = props => {
   const query = props.history.location.pathname;
-  const { toggleApi, setToggleApi } = useContext(ApiToggleContext);
+  const { toggleApi } = useContext(ApiToggleContext);
   const [searchResults, setSearchResults] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,6 @@ const Results = props => {
     }else{
       setSearchResults(SEARCH_RESULTS);
     }
-    // setSearchResults(SEARCH_RESULTS);
   }, [toggleApi]);
 
   const displayResults = () => {

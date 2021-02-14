@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Image } from 'semantic-ui-react';
 
 // util
-import { fetchSearchResults } from '../../util/api_util';
+import { checkFetch, fetchSearchResults, fetchTest } from '../../util/api_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
 
@@ -18,10 +18,12 @@ const Results = props => {
 
   useEffect(() => {
     if(toggleApi){
-      fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
+      fetchSearchResults(10 ,query.slice(9))
+        .then(data => setSearchResults(data.items))
+        .catch(err => props.history.push('/404'))
     }else{
-      setSearchResults(SEARCH_RESULTS);
-    }
+        setSearchResults(SEARCH_RESULTS);
+      }
   }, [toggleApi]);
 
   const displayResults = () => {
@@ -60,7 +62,14 @@ const Results = props => {
     </Grid>
   };
 
+  const testingFetchTimeout = () => {
+    return <div>
+      testing
+    </div>
+  }
+
   return searchResults ? displayResults() : loading;
+  // return searchResults ? testingFetchTimeout() : loading;
 };
 
 export default withRouter(Results);

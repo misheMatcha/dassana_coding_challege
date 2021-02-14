@@ -19,8 +19,12 @@ const VideoShow = props => {
 
   useEffect(() => {
     if(toggleApi){
-      fetchVideo(videoId.slice(7)).then(data => setVideoData(data.items[0]))
-      fetchRelatedVideos(6, videoId.slice(7)).then(data => setRelatedVideos(data.items))
+      fetchVideo(videoId.slice(7))
+        .then(data => setVideoData(data.items[0]))
+        .catch(err => props.history.push('/404'))
+      fetchRelatedVideos(6, videoId.slice(7))
+        .then(data => setRelatedVideos(data.items))
+        .catch(err => props.history.push('/404'))
     }else{
       setVideoData(VIDEO_RESULT);
       setRelatedVideos(RELATED_VIDEOS);

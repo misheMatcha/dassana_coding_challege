@@ -19,7 +19,7 @@
       .nav-title span{
         color: #FFFFFF;
       }
-    
+
   .ui.fluid.action.input.navbar-searchbar{
     border: 1px solid #303030;
   }
@@ -44,16 +44,12 @@
   .microphone.icon{
     font-size: 20px;
   }
-  
-  .video.camera.icon{
-    font-size: 20px;
-    margin-right: 25px;
-  }
+
   .grid.layout.icon{
     font-size: 20px;
-    margin-right: 25px;
+    padding: 0 15px;
   }
-  .bell.icon{
+  .ellipsis.vertical.icon{
     font-size: 20px;
-    margin-right: 25px;
+    padding: 0 15px;
   }

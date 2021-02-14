@@ -36,6 +36,7 @@ const Navbar = props => {
         <Icon name='microphone' />
       </Grid.Column>
       <Grid.Column verticalAlign='middle'>
+      {/* <Grid.Column className='navbar-options'> */}
         <Button content={toggleApi ? 'API On' : 'API Off'} onClick={() => setToggleApi(!toggleApi)} />
         <Icon name='grid layout' />
         <Icon name='ellipsis vertical' />

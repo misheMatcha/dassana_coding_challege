@@ -29,7 +29,6 @@ const VideoShow = props => {
       setVideoData(VIDEO_RESULT);
       setRelatedVideos(RELATED_VIDEOS);
     }
-    console.log(videoData)
   }, [])
 
   // refactor results and related videos to a single component later

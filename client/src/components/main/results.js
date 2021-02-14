@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Image } from 'semantic-ui-react';
 
 // util
-import { checkFetch, fetchSearchResults, fetchTest } from '../../util/api_util';
+import { fetchSearchResults } from '../../util/api_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
 

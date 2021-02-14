@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Grid, Icon, Item, Image } from 'semantic-ui-react';
+
+// util
 import { fetchSearchResults } from '../../util/api_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
+
+// context
+import { ApiToggleContext } from './api_toggle_context';
 
 const Results = props => {
   const query = props.history.location.pathname;
   const [searchResults, setSearchResults] = useState(null);
   // const [searchResults, setSearchResults] = useState(SEARCH_RESULTS);
+  const { toggleApi, setToggleApi } = useContext(ApiToggleContext);
 
   useEffect(() => {
-    fetchSearchResults(1 ,query.slice(9)).then(data => setSearchResults(data.items))
+    if(toggleApi){
+      // fetchSearchResults(10 ,query.slice(9)).then(data => setSearchResults(data.items))
+    }else{
+      setSearchResults(SEARCH_RESULTS);
+    }
   }, []);
 
   const displayResults = () => {
@@ -20,10 +30,8 @@ const Results = props => {
       {
         // to be added - overlay with buttons for add to queue, add to watch later, and report
         // display on hover
-        // look into why isn't loading initially
-        // !searchResults ? 'loading' :
-         searchResults.map(result => {
-          return <Grid.Row key={result.id.videoId}>
+         searchResults.map((result, idx) => {
+          return <Grid.Row key={idx}>
             <Grid.Column className='result-thumbnail' as={Link} to={`/video/${result.id.videoId}`} width={3} verticalAlign='middle'>
               {/* <Item.Image size='medium' src={result.snippet.thumbnails.medium.url} /> */}
               <Image src={result.snippet.thumbnails.medium.url} />

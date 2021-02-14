@@ -69,6 +69,8 @@ const displayLink = whichList => {
   - Changed constants to functions so that the mapping will run when invoked instead of at initial render when the data is undefined.
 
 ## Known Issues
+### 02/13/2020
+- While on search results, searching again doesn't rerender the page with the new query
 ### 02/12/2020
 - Hovering color issue on sidebar YouTube icon
 - Navbar styling needs to fixed to be more aligned with the sidebar to prevent visual conflicts

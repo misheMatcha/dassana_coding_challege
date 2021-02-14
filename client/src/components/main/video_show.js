@@ -29,6 +29,7 @@ const VideoShow = props => {
       setVideoData(VIDEO_RESULT);
       setRelatedVideos(RELATED_VIDEOS);
     }
+    console.log(videoData)
   }, [])
 
   // refactor results and related videos to a single component later
@@ -61,7 +62,7 @@ const VideoShow = props => {
         <Grid.Column width={10}>
           <Embed
             id={videoData.id}
-            placeholder={videoData.snippet.thumbnails.standard.url}
+            placeholder={videoData.snippet.thumbnails.default.url}
             source='youtube' />
             <Item.Group>
               <Item.Header className='video-show-title'>

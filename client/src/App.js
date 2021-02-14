@@ -17,14 +17,10 @@ function App() {
   const [displaySidebar, setDisplaySidebar] = useState(false);
   const [toggleApi, setToggleApi] = useState(true);
 
-  useEffect(() => {
-    console.log(toggleApi)
-  });
-  
   const toggleSidebarDisplay = () => {
     setDisplaySidebar(!displaySidebar);
   };
-  
+
   return <div id='app'>
     <ApiToggleContext.Provider value={{ toggleApi, setToggleApi }}>
       <Navbar onChange={() => toggleSidebarDisplay()} />

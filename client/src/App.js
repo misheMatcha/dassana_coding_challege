@@ -8,7 +8,7 @@ import Sidebar from "./components/menu_sidebar";
 import Home from "./components/main/home";
 import Results from "./components/main/results";
 import VideoShow from "./components/main/video_show";
-import Error404 from "./components/main/error_404";
+import ErrorShow from "./components/main/error_show";
 
 // context
 import { ApiToggleContext } from "./components/main/api_toggle_context";
@@ -29,7 +29,8 @@ function App() {
         <RenderRoute exact path='/' component={Home} />
         <RenderRoute exact path='/results/:search_query' component={Results} />
         <RenderRoute exact path='/video/:id' component={VideoShow} />
-        <RenderRoute exact path='/404' component={Error404} />
+        <RenderRoute exact path='/404' component={ErrorShow} />
+        <RenderRoute exact path='/page-not-found' component={ErrorShow} />
       </Switch>
     </ApiToggleContext.Provider>
   </div>

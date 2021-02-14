@@ -1,0 +1,19 @@
+.ui.items.error-page{
+  text-align: center;
+  flex-direction: column;
+}
+  .item.error-page-text{
+    justify-content: center;
+    flex-direction: column;
+  }
+  .ui.items>.item.error-page-text{
+    font-size: 1.9vw;
+    line-height: normal;
+  }
+
+  .item.error-page-text a{
+    color: white;
+  }
+    .item.error-page-text a:hover{
+      color: #CCCCCC;
+    }

@@ -154,3 +154,4 @@ Recreated the YouTube error image using svg, accounting for the slight gradient 
 - Video description with show more/less toggle
 - ~404/Error page~ (added: 02/14/2020)
 - Hosting for easier access instead of cloning the repo
+- Tests to ensure everything is working as intended

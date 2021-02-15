@@ -16,12 +16,11 @@ Video page
 ## Getting Started
 Download or clone the repo onto your computer. Head into the client directory and run 'npm start' into the terminal.
 
-To see the YouTube API features, you can add your API key into the util/api_util.js. Otherwise home, results, and video show will have commented out variables that use a static list for testing, which you can comment back in.
 
-Ex:
 
-![Screen Shot 2021-02-10 at 10 19 12 PM](https://user-images.githubusercontent.com/52799217/107607401-037f6080-6bee-11eb-8848-3ebb90a06049.png)
+To see the YouTube API features, you can add your API key into the client/src/util/api_util.js. Otherwise you can use the api toggle in the navigation bar to use static data.
 
+![api-toggle-onoff](https://user-images.githubusercontent.com/52799217/107983465-a9c6bf80-6f7a-11eb-87b7-5853798f080f.gif)
 
 ## Highlights
 - Responsive design

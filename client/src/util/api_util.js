@@ -1,4 +1,4 @@
-import { YT_KEY } from '../config/keys';
+const YT_KEY = require('../config/keys').ytKey;
 
 export async function fetchSearchResults(max, query){
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${max}&q=${query}&key=${YT_KEY}`;

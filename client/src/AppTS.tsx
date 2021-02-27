@@ -7,6 +7,7 @@ import Home from './components/main/home';
 import NavbarTS from './components/navbar_ts';
 import Sidebar from './components/menu_sidebar';
 import Navbar from './components/navbar';
+import Results from './components/main/results';
 
 // rename file after converstion to typescript
 
@@ -36,11 +37,12 @@ const App: FC = () => {
 
     return <div>
         <AppContextProvider value={appContextValues}>
-            <Navbar />
+            {/* <Navbar /> */}
             <NavbarTS apiToggle={apiOnClick} sidebarToggle={sidebarOnClick} />
             {/* <Sidebar /> */}
             <Switch>
                 <RenderRoute exact path="/" component={Home} />
+                <RenderRoute exact path='/results/:search_query' component={Results} />
             </Switch>
         </AppContextProvider>
     </div>

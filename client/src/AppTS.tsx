@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Switch } from 'react-router-dom';
+import { RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { RenderRoute } from './util/general_util';
 import { AppContextProvider } from './context/AppContext';
 
@@ -11,34 +11,51 @@ import Results from './components/main/results';
 
 // rename file after converstion to typescript
 
-const App: FC = () => {
+interface Props extends RouteComponentProps {}
+
+const App: FC<Props> = ({ history }) => {
     const [toggleApi, setToggleApi] = useState(true);
     const [toggleSidebar, setToggleSidebar] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const appContextValues = {
         toggleApi,
         setToggleApi,
         toggleSidebar,
-        setToggleSidebar
+        setToggleSidebar,
+        searchQuery,
+        setSearchQuery
     }
 
     useEffect(() => {
+        // console.log(toggleSidebar)
         // console.log(toggleApi)
+        // console.log(searchQuery)
     })
 
     // pass an onclick as it reduces repetitive code
-    const apiOnClick = () => {
-        setToggleApi(!toggleApi)
+    const toggleOnClick = (toggle: string) => {
+        if(toggle === 'api'){
+            setToggleApi(!toggleApi)
+        }else{
+            setToggleSidebar(!toggleSidebar)
+        }
+    }
+    
+    const redirectUrl = (endpoint: string) => {
+        history.push(`/results/${endpoint}`)
     }
 
-    const sidebarOnClick = () => {
-        setToggleSidebar(!toggleSidebar)
+    const updateSearchQuery = (queryString: string) => {
+        setSearchQuery(queryString)
+        // console.log(queryString)
+        // history.push(`/results/${searchQuery}`)
+        redirectUrl(queryString)
     }
 
     return <div>
         <AppContextProvider value={appContextValues}>
-            {/* <Navbar /> */}
-            <NavbarTS apiToggle={apiOnClick} sidebarToggle={sidebarOnClick} />
+            <NavbarTS onClickToggle={toggleOnClick} updateQuery={updateSearchQuery} />
             {/* <Sidebar /> */}
             <Switch>
                 <RenderRoute exact path="/" component={Home} />
@@ -48,4 +65,4 @@ const App: FC = () => {
     </div>
 }
 
-export default App;
+export default withRouter(App);

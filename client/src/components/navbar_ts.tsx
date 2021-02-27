@@ -5,11 +5,11 @@ import AppContext from "../context/AppContext";
 import { Button } from "./main/button";
 
 interface NavbarProps extends RouteComponentProps {
-    apiToggle: () => void;
-    sidebarToggle: () => void;
+    onClickToggle: (toggle: string) => void;
+    updateQuery: (newQuery: string) => void;
 }
 
-const Navbar: FC<NavbarProps> = ({ apiToggle, sidebarToggle, history }) => {
+const Navbar: FC<NavbarProps> = ({ onClickToggle, updateQuery, history }) => {
     const [query, setQuery] = useState('');
     const { toggleApi } = useContext(AppContext);
 
@@ -17,14 +17,10 @@ const Navbar: FC<NavbarProps> = ({ apiToggle, sidebarToggle, history }) => {
         setQuery(e.target.value)
     }
 
-    const submitSearch = () => {
-        history.push(`/results/${query}`)
-    }
-
     return <Sticky>
         <Grid className='navbar' centered columns='equal' padded>
         <Grid.Column className='navbar-sidebar' verticalAlign='middle'>
-            <Icon name='sidebar' onClick={sidebarToggle} />
+            <Icon name='sidebar' onClick={() => onClickToggle('sidebar')} />
             <Link to='/' className='nav-title'>
             <Icon name='youtube play' />
             <span>YouTube</span>
@@ -32,7 +28,7 @@ const Navbar: FC<NavbarProps> = ({ apiToggle, sidebarToggle, history }) => {
         </Grid.Column>
         <Grid.Column width={7}>
             <Input className='navbar-searchbar' onChange={e => handleInput(e)}
-            action={{ icon: 'search', onClick: () => submitSearch() }}
+            action={{ icon: 'search', onClick: () => updateQuery(query) }}
             placeholder='Search' fluid />
         </Grid.Column>
         <Grid.Column className='navbar-mic' width={1} verticalAlign='middle'>
@@ -40,7 +36,7 @@ const Navbar: FC<NavbarProps> = ({ apiToggle, sidebarToggle, history }) => {
         </Grid.Column>
         <Grid.Column verticalAlign='middle'>
         {/* <Grid.Column className='navbar-options'> */}
-            <Button onClick={apiToggle}>{toggleApi ? 'API On' : 'API Off'}</Button>
+            <Button onClick={() => onClickToggle('api')}>{toggleApi ? 'API On' : 'API Off'}</Button>
             <Icon name='grid layout' />
             <Icon name='ellipsis vertical' />
         </Grid.Column>

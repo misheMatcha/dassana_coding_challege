@@ -7,7 +7,8 @@ import Home from './components/main/home';
 import NavbarTS from './components/navbar_ts';
 import Sidebar from './components/menu_sidebar';
 import Navbar from './components/navbar';
-import Results from './components/main/results';
+// import Results from './components/main/results';
+import Results from './components/main/results_ts';
 
 // rename file after converstion to typescript
 

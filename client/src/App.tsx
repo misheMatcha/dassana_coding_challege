@@ -25,13 +25,7 @@ const App: FC<Props> = ({ history }) => {
         searchQuery,
         setSearchQuery
     }
-
-    useEffect(() => {
-        // console.log(toggleSidebar)
-        // console.log(toggleApi)
-        // console.log(searchQuery)
-    })
-
+    
     // pass an onclick as it reduces repetitive code
     const toggleOnClick = (toggle: string) => {
         if(toggle === 'api'){
@@ -47,15 +41,13 @@ const App: FC<Props> = ({ history }) => {
 
     const updateSearchQuery = (queryString: string) => {
         setSearchQuery(queryString)
-        // console.log(queryString)
-        // history.push(`/results/${searchQuery}`)
         redirectUrl(queryString)
     }
 
     return <div>
         <AppContextProvider value={appContextValues}>
             <Navbar onClickToggle={toggleOnClick} updateQuery={updateSearchQuery} />
-            {/* <Sidebar /> */}
+            <Sidebar onClickToggle={toggleOnClick} />
             <Switch>
                 <RenderRoute exact path='/' component={Home} />
                 <RenderRoute exact path='/results/:search_query' component={Results} />

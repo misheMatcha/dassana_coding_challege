@@ -4,13 +4,11 @@ import { RenderRoute } from './util/general_util';
 import { AppContextProvider } from './context/AppContext';
 
 import Home from './components/main/home';
-import NavbarTS from './components/navbar_ts';
 import Sidebar from './components/menu_sidebar';
 import Navbar from './components/navbar';
-// import Results from './components/main/results';
-import Results from './components/main/results_ts';
-
-// rename file after converstion to typescript
+import Results from './components/main/results';
+import VideoShow from './components/main/video_show';
+import ErrorShow from './components/main/error_show';
 
 interface Props extends RouteComponentProps {}
 
@@ -42,7 +40,7 @@ const App: FC<Props> = ({ history }) => {
             setToggleSidebar(!toggleSidebar)
         }
     }
-    
+
     const redirectUrl = (endpoint: string) => {
         history.push(`/results/${endpoint}`)
     }
@@ -56,11 +54,14 @@ const App: FC<Props> = ({ history }) => {
 
     return <div>
         <AppContextProvider value={appContextValues}>
-            <NavbarTS onClickToggle={toggleOnClick} updateQuery={updateSearchQuery} />
+            <Navbar onClickToggle={toggleOnClick} updateQuery={updateSearchQuery} />
             {/* <Sidebar /> */}
             <Switch>
-                <RenderRoute exact path="/" component={Home} />
+                <RenderRoute exact path='/' component={Home} />
                 <RenderRoute exact path='/results/:search_query' component={Results} />
+                <RenderRoute exact path='/video/:id' component={VideoShow} />
+                <RenderRoute exact path='/404' component={ErrorShow} />
+                <RenderRoute exact path='/page-not-found' component={ErrorShow} />
             </Switch>
         </AppContextProvider>
     </div>

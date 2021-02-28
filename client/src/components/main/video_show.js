@@ -3,19 +3,19 @@ import { withRouter } from 'react-router';
 import { Divider, Embed, Grid, Icon, Item, Image, Button } from 'semantic-ui-react';
 
 // util
-import { fetchRelatedVideos, fetchVideo } from '../../util/api_util';
+import { fetchRelatedVideos, fetchVideo } from '../../util/app_util';
 import { addCommaToNumber, convertPublishDateFormat, loading, timeSincePublished } from '../../util/general_util';
 import { RELATED_VIDEOS } from '../../util/related_results';
 import { VIDEO_RESULT } from '../../util/video_result';
 
 // context
-import { ApiToggleContext } from './api_toggle_context';
+import AppContext from '../../context/AppContext';
 
 const VideoShow = props => {
   const videoId = props.history.location.pathname;
   const [videoData, setVideoData] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState(null);
-  const { toggleApi } = useContext(ApiToggleContext);
+  const { toggleApi } = useContext(AppContext);
 
   useEffect(() => {
     if(toggleApi){

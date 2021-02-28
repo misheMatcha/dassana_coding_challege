@@ -3,7 +3,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Grid, Image, Item } from 'semantic-ui-react';
 // util
 // import { fetchSearchResults } from '../../util/api_util';
-import { fetchSearchResults } from '../../util/app_util_ts';
+import { fetchSearchResults } from '../../util/app_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
 // context

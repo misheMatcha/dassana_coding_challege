@@ -13,6 +13,8 @@ Video page
 - React
 - YouTube API
 - Semantic-UI
+- TypeScript
+- ReactJSS
 ## Getting Started
 Download or clone the repo onto your computer. Head into the client directory and run 'npm start' into the terminal.
 
@@ -120,6 +122,11 @@ Recreated the YouTube error image using svg, accounting for the slight gradient 
   - Solution: Getting the difference of the current time and published time in milliseconds. Then checking the difference against each single increment. Then truncating the difference and returning a string, making a check to ensure it's singular if its '1'. Switch case wasn't applicable due to the comparisons I needed to make.
   
 ## Updates
+### 03/01/2020
+- Converted half of the project to typescript
+- Fixed issue wit search, on the results page when querying again it will reload
+- Consolidated context and reduced onClicks to DRY up code
+- Added a custom button component using react-jss to style
 ### 02/14/2020
 - Added error page for when api quota cap is met, or if the api has failed.
 - Added api toggle to allow the user to switch between static data or api data. Creates a better user experiences and allows user to continue testing features without being blocked by api limitations.
@@ -132,8 +139,10 @@ Recreated the YouTube error image using svg, accounting for the slight gradient 
   - Changed constants to functions so that the mapping will run when invoked instead of at initial render when the data is undefined.
 
 ## Known Issues
+### 03/01/2020
+- Netlify issues with merging and deploying
 ### 02/13/2020
-- While on search results, searching again doesn't rerender the page with the new query
+- ~While on search results, searching again doesn't rerender the page with the new query~ (fixed: 03/01/2020)
 ### 02/12/2020
 - Hovering color issue on sidebar YouTube icon
 - Navbar styling needs to fixed to be more aligned with the sidebar to prevent visual conflicts

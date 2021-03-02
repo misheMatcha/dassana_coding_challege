@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Sidebar, Icon, Divider, Item, Button, Grid, List } from 'semantic-ui-react';
+import { Menu, Sidebar, Icon, Divider, Item, Button } from 'semantic-ui-react';
+import AppContext from '../context/AppContext';
 
 const MenuSidebar = props => {
+  const { toggleSidebar } = useContext(AppContext);
     const linkLists = {
       home: {
         nameList: ['Home', 'Trending', 'Subscriptions'],
@@ -66,18 +68,19 @@ const MenuSidebar = props => {
       icon='labeled'
       inverted
       vertical
-      visible={props.toggle}
+      visible={toggleSidebar}
       borderless
     >
       <Divider hidden />
       <Menu.Item fitted>
         <Item.Content className='menu-sidebar-nav display-flex'>
-          <Icon name='sidebar' onClick={() => props.onChange()} />
+          <Icon name='sidebar' onClick={() => props.onClickToggle('sidebar')} />
           <Link to='/' className='menu-sidebar-home'>
             <Icon name='youtube play' />
             <span>YouTube</span>
           </Link>
         </Item.Content>
+
       </Menu.Item>
       <Divider />
       {displayLink('home')}

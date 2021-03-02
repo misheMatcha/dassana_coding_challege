@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Grid, Item } from 'semantic-ui-react';
-import { fetchSearchResults } from '../../util/api_util';
 import { loading, timeSincePublished } from '../../util/general_util';
 import { SEARCH_RESULTS } from '../../util/search_results';
 
 const Home = () => {
-  // const [videoList, setVideoList] = useState(null);
-  const [videoList, setVideoList] = useState(SEARCH_RESULTS);
+  const videoList = SEARCH_RESULTS;
 
   useEffect(() => {
     // limit results to 15 due to daily limitations on get requests
